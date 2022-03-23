@@ -3,12 +3,19 @@ const form = document.querySelector('form');
 const input=document.querySelector('#txtTaskName');
 const btnDeleteAll=document.querySelector('#btnDeleteAll')
 const taskList = document.querySelector('#task-list');
+// const items = ['item1','item2'];
 
 
+//eventlisteners
 eventListeners();
 
 function eventListeners(){
     form.addEventListener('submit',addNewItem);
+    //delete item
+    taskList.addEventListener('click',deleteItem);
+    //delete all item
+    btnDeleteAll.addEventListener('click',deleteAllItem);
+
 }
 
 //add new item
@@ -40,4 +47,26 @@ function addNewItem(e){
 
 
     e.preventDefaault(); // sayfanın yenilenmesini engelledik.
+}
+
+//delete an item
+
+function  deleteItem(e);{
+    ıf(e.target.className==='fas fa-times')
+    {
+        console.log(e.target);
+        e.target.parentElement.parentElement.remove();
+    }
+         // fas dediğiiz i etiketi olduğundan bir üst eleman olan a etiketine ve onunda bir üst elemanı olan asıl silmek istediğimiz li etiketine çıkmak için iki kere parent element kullandık.
+    
+    e.preventDefaault();
+}
+
+//delete all item
+function deleteAllItem();{
+  
+    taskList.innerHTML=''; // tüm li ileri temizlemiş oluyoruz bu komut ile.
+
+    e.preventDefaault();
+
 }
